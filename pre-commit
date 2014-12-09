@@ -1,0 +1,30 @@
+#!/usr/bin/php
+# first npm install -g jshint
+# jshint
+
+<?php
+$error = false;
+$path = "~/miiitv_plus/";
+
+exec('git diff --cached --name-only --diff-filter=ACM | grep .js', $output, $return_var);
+
+foreach ($output as $file) {
+    $file_path = $path . $file;
+    echo $file_path;
+    echo "\n";
+    echo "--------------------";                                                                                                                                         15     echo "\n";
+    echo shell_exec("jshint " . $file_path . "");
+    echo "\n";
+    echo "====================";
+    $error = true;
+}
+
+if ($error)
+{
+    exit(1);
+}
+else
+{
+    exit(0);
+}
+?>
