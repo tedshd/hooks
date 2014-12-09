@@ -12,7 +12,8 @@ foreach ($output as $file) {
     $file_path = $path . $file;
     echo $file_path;
     echo "\n";
-    echo "--------------------";                                                                                                                                         15     echo "\n";
+    echo "--------------------";
+    echo "\n";
     echo shell_exec("jshint " . $file_path . "");
     echo "\n";
     echo "====================";
