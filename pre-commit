@@ -4,20 +4,50 @@
 
 <?php
 $error = false;
-$path = "~/miiitv_plus/";
+// $path = "~/miiitv_plus/";
+$path = "";
 
-exec('git diff --cached --name-only --diff-filter=ACM | grep .js', $output, $return_var);
+exec('git diff --cached --name-only --diff-filter=ACM | grep .js', $output_js, $return_var);
 
-foreach ($output as $file) {
-    $file_path = $path . $file;
-    echo $file_path;
-    echo "\n";
-    echo "--------------------";
-    echo "\n";
-    echo shell_exec("jshint " . $file_path . "");
-    echo "\n";
-    echo "====================";
-    $error = true;
+if (!empty($output_js))
+{
+    foreach ($output_js as $file) {
+        $file_path = $path . $file;
+        echo $file_path;
+        echo "\n";
+        echo "--------------------";
+        echo "\n";
+        echo shell_exec("jshint " . $file_path . "");
+        echo "\n";
+        echo "====================";
+        if (!empty(shell_exec("jshint " . $file_path . "")))
+        {
+            $error = true;
+        }
+    }
+}
+
+# http://tedshd.logdown.com/posts/246406-php-install-phpcsphp-codesniffer
+# phpcs
+
+exec('git diff --cached --name-only --diff-filter=ACM | grep .php', $output_php, $return_var);
+
+if (!empty($output_php))
+{
+    foreach ($output_php as $file) {
+        $file_path = $path . $file;
+        echo $file_path;
+        echo "\n";
+        echo "--------------------";
+        echo "\n";
+        echo shell_exec("phpcs " . $file_path . "");
+        echo "\n";
+        echo "====================";
+        if (!empty(shell_exec("phpcs " . $file_path . "")))
+        {
+            $error = true;
+        }
+    }
 }
 
 if ($error)
