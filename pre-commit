@@ -13,15 +13,15 @@ if (!empty($output_js))
 {
     foreach ($output_js as $file) {
         $file_path = $path . $file;
-        echo $file_path;
-        echo "\n";
-        echo "--------------------";
-        echo "\n";
-        echo shell_exec("jshint " . $file_path . "");
-        echo "\n";
-        echo "====================";
         if (!empty(shell_exec("jshint " . $file_path . "")))
         {
+            echo $file_path;
+            echo "\n";
+            echo "--------------------";
+            echo "\n";
+            echo shell_exec("jshint " . $file_path . "");
+            echo "\n";
+            echo "====================";
             $error = true;
         }
     }
@@ -36,15 +36,15 @@ if (!empty($output_php))
 {
     foreach ($output_php as $file) {
         $file_path = $path . $file;
-        echo $file_path;
-        echo "\n";
-        echo "--------------------";
-        echo "\n";
-        echo shell_exec("phpcs " . $file_path . "");
-        echo "\n";
-        echo "====================";
         if (!empty(shell_exec("phpcs " . $file_path . "")))
         {
+            echo $file_path;
+            echo "\n";
+            echo "--------------------";
+            echo "\n";
+            echo shell_exec("phpcs " . $file_path . "");
+            echo "\n";
+            echo "====================";
             $error = true;
         }
     }
