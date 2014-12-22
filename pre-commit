@@ -7,7 +7,7 @@ $error = false;
 // $path = "~/miiitv_plus/";
 $path = "";
 
-exec('git diff --cached --name-only --diff-filter=ACM | grep .js', $output_js, $return_var);
+exec("git diff --cached --name-only --diff-filter=ACM | grep '\.js'", $output_js, $return_var);
 
 if (!empty($output_js))
 {
@@ -30,7 +30,7 @@ if (!empty($output_js))
 # http://tedshd.logdown.com/posts/246406-php-install-phpcsphp-codesniffer
 # phpcs
 
-exec('git diff --cached --name-only --diff-filter=ACM | grep .php', $output_php, $return_var);
+exec("git diff --cached --name-only --diff-filter=ACM | grep '\.php'", $output_php, $return_var);
 
 if (!empty($output_php))
 {
