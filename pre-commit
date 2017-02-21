@@ -3,6 +3,7 @@
 # jshint
 
 <?php
+
 $error = false;
 // $path = "~/miiitv_plus/";
 $path = "";
